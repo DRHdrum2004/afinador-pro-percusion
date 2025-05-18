@@ -26,5 +26,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.DEPLOYMENT_TOKEN }}
-          publish_dir:  ./public
+          publish_dir:   ./docs
           clean: true  # Limpia archivos antiguos para evitar conflictos
