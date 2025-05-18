@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Aplicación Offline</title>
+
+    <!-- Importación de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Vincular el manifest.json para PWA -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Optimización para modo offline y experiencia móvil -->
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Aplicación de afinación offline para percusión">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Cargar la aplicación principal -->
+    <script src="/app.js" defer></script>
+
+    <!-- Registrar el Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(reg => console.log('✅ Service Worker registrado:', reg))
+            .catch(err => console.error('❌ Error registrando el Service Worker:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
